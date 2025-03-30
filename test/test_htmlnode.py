@@ -8,7 +8,7 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode()
         self.assertIsNone(node.tag)
         self.assertIsNone(node.value)
-        self.assertIsNone(node.children)
+        self.assertIsNone(node.children_getter())
         self.assertIsNone(node.props)
 
 
