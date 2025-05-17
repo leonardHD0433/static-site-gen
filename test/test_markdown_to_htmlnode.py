@@ -167,3 +167,22 @@ print('Blank line above')
             html, 
             "<div><ol><li>This item has <b>bold</b> text</li><li>This item has <i>italic</i> text</li><li>This one has <code>code</code> as well</li></ol></div>"
         )
+
+    def test_unordered_list_block(self):
+        md = "- Item one"
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html, 
+            "<div><ul><li>Item one</li></ul></div>"
+        )
+
+        md = "- Item one\n- Item two\n- Item three"
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html, 
+            "<div><ul><li>Item one</li><li>Item two</li><li>Item three</li></ul></div>"
+        )
+
+        

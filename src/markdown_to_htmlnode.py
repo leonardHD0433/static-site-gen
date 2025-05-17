@@ -92,8 +92,11 @@ def add_tag_to_block(block, block_type):
         return ParentNode("ol", children=item_list_nodes)
 
     if block_type == BlockType.UNORDERED_LIST:
-        html = f"<p>{html}</p>"
-
-    return html
-
-    
+        item_list_nodes = []
+        item_list = block.split("\n")
+        for item in item_list:
+            cleaned_item = (item.lstrip("- ").strip())
+            text_node = text_to_textnodes(cleaned_item)
+            html_node = create_HTMLNodes(text_node)
+            item_list_nodes.append(ParentNode("li", children=html_node))
+        return ParentNode("ul", children=item_list_nodes)
