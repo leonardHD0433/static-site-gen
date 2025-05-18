@@ -5,7 +5,7 @@ def copy_static(source_dir, dest_dir):
     if os.path.exists(dest_dir):
         shutil.rmtree(dest_dir)
 
-    os.mkdir(dest_dir)
+    os.makedirs(dest_dir)
 
     items_in_source = os.listdir(source_dir)
 
