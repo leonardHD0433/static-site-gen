@@ -60,9 +60,9 @@ def add_tag_to_block(block, block_type):
                 heading_string += "#"
             else:
                 break
-        block = block.lstrip(f"{heading_string} ")
-        text_node = TextNode(block, TextType.TEXT)
-        html_node = create_HTMLNodes([text_node])
+        heading_content = block.lstrip(f"{heading_string} ")
+        text_nodes = text_to_textnodes(heading_content)
+        html_node = create_HTMLNodes(text_nodes)
         return ParentNode(f"h{heading_count}", children= html_node)
     
     if block_type == BlockType.CODE:
